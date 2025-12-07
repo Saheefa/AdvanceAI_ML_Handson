@@ -51,16 +51,17 @@ Artifact Saving: The final cells save the trained models (.json, .keras) and pre
 The core dependencies are managed by pip install commands within the notebook. It is recommended to run this code in a fresh environment (like Google Colab) to ensure compatibility. The main dependencies are:
 
 Library	Version (Recommended/Used)	Purpose
-Python	3.8+	Core Execution Environment
-TensorFlow	2.x (2.12+)	Deep Learning (FNN, 1D-CNN)
-Keras-Tuner	Any recent version	Hyperparameter Optimization
-XGBoost	Any recent version	Gradient Boosting Model
-NumPy	Any recent version	Numerical Operations
-Pandas	Any recent version	Data Manipulation
-Scikit-learn	Any recent version	Preprocessing, Splitting, Evaluation
-SHAP	Any recent version	SHAP Explanations
-LIME	Any recent version	LIME Explanations
-Matplotlib / Seaborn	Any recent version	Plotting and Visualization
+
+1. Python	3.8+	Core Execution Environment
+2. TensorFlow	2.x (2.12+)	Deep Learning (FNN, 1D-CNN)
+3. Keras-Tuner	Any recent version	Hyperparameter Optimization
+4. XGBoost	Any recent version	Gradient Boosting Model
+5. NumPy	Any recent version	Numerical Operations
+6. Pandas	Any recent version	Data Manipulation
+7. Scikit-learn	Any recent version	Preprocessing, Splitting, Evaluation
+8. SHAP	Any recent version	SHAP Explanations
+9. LIME	Any recent version	LIME Explanations
+10. Matplotlib / Seaborn	Any recent version	Plotting and Visualization
 
 
 ⏱️ Expected Runtime for Training
@@ -69,12 +70,22 @@ Matplotlib / Seaborn	Any recent version	Plotting and Visualization
 
 The majority of the runtime is consumed by the hyperparameter tuning steps for the Neural Networks (FNN and 1D-CNN).
 
-Model / Step	Description	Estimated Runtime (Colab Standard GPU/CPU)
-1D-CNN Tuning	kt.RandomSearch with 10 trials (10 epochs max, validation split, early stopping).	15 - 30 minutes
-FNN Tuning	kt.RandomSearch with 10 trials (15 epochs max, validation split, early stopping).	10 - 20 minutes
-XGBoost Tuning	RandomizedSearchCV with 10 iterations (CV=3, n_jobs=-1).	5 - 15 minutes
-XAI SHAP/LIME	Generating SHAP (KernelExplainer for FNN is slow) and LIME explanations for 100 samples and 1 instance, respectively.	20 - 40 minutes (KernelSHAP is compute-intensive)
-Total Estimated Runtime		50 - 105 minutes (Approx. 1 to 1.75 hours)
+
+1. Model / Step	Description	Estimated Runtime (Colab Standard GPU/CPU)
+   
+2. 1D-CNN Tuning	kt.RandomSearch with 10 trials (10 epochs max, validation split, early stopping).	15 - 30 minutes
+
+   
+3. FNN Tuning	kt.RandomSearch with 10 trials (15 epochs max, validation split, early stopping).	10 - 20 minutes
+
+   
+4. XGBoost Tuning	RandomizedSearchCV with 10 iterations (CV=3, n_jobs=-1).	5 - 15 minutes
+
+   
+5. XAI SHAP/LIME	Generating SHAP (KernelExplainer for FNN is slow) and LIME explanations for 100 samples and 1 instance, respectively.	20 - 40 minutes (KernelSHAP is compute-intensive)
+
+   
+6. Total Estimated Runtime		50 - 105 minutes (Approx. 1 to 1.75 hours)
 
 
 
