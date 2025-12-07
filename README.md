@@ -1,7 +1,13 @@
 🤖 Robot Telemetry Anomaly Detection (XAI Assignment)
+
+
+
 This repository contains the code and generated models for classifying robot telemetry data into different operational states: Normal, DoS (Denial of Service), and Malfunction. The pipeline includes robust preprocessing, hyperparameter optimization, and extensive Explainable AI (XAI) analysis using SHAP and LIME.
 
 🚀 Instructions to Run Code
+
+
+
 The provided code is designed to be run in a Google Colab environment, which offers the necessary dependencies and GPU/TPU access for the deep learning models and hyperparameter search.
 
 Prerequisites
@@ -9,7 +15,6 @@ Google Drive Access: The code relies on reading data files from a mounted Google
 
 Dataset Files: Ensure your dataset files (Normal1.csv, Dos1.csv, etc.) are placed in a designated folder in your Google Drive, matching the path in the code:
 
-Python
 
 DATASET_PATH = '/content/drive/MyDrive/' # or a subfolder like '/content/drive/MyDrive/Telemetry_Data/'
 Step-by-Step Execution
@@ -17,13 +22,11 @@ Open in Colab: Upload the .ipynb notebook to Google Drive or GitHub and open it 
 
 Install Libraries: Run the first code cell to install the necessary libraries (keras-tuner, lime). The -q flag suppresses verbose output.
 
-Python
 
 !pip install -q keras-tuner
 !pip install lime
 Mount Drive: Run the next cell to mount your Google Drive. Follow the instructions and grant permission.
 
-Python
 
 from google.colab import drive
 drive.mount('/content/drive')
@@ -42,6 +45,9 @@ XAI Analysis: Retrains simplified versions of the best XGBoost and FNN models on
 Artifact Saving: The final cells save the trained models (.json, .keras) and preprocessing tools (.pkl) into a local directory named saved_models/.
 
 📦 Required Libraries and Versions
+
+
+
 The core dependencies are managed by pip install commands within the notebook. It is recommended to run this code in a fresh environment (like Google Colab) to ensure compatibility. The main dependencies are:
 
 Library	Version (Recommended/Used)	Purpose
@@ -58,6 +64,9 @@ Matplotlib / Seaborn	Any recent version	Plotting and Visualization
 
 
 ⏱️ Expected Runtime for Training
+
+
+
 The majority of the runtime is consumed by the hyperparameter tuning steps for the Neural Networks (FNN and 1D-CNN).
 
 Model / Step	Description	Estimated Runtime (Colab Standard GPU/CPU)
@@ -67,6 +76,6 @@ XGBoost Tuning	RandomizedSearchCV with 10 iterations (CV=3, n_jobs=-1).	5 - 15 m
 XAI SHAP/LIME	Generating SHAP (KernelExplainer for FNN is slow) and LIME explanations for 100 samples and 1 instance, respectively.	20 - 40 minutes (KernelSHAP is compute-intensive)
 Total Estimated Runtime		50 - 105 minutes (Approx. 1 to 1.75 hours)
 
-Export to Sheets
+
 
 Note: The runtime is highly dependent on the Colab instance's allocated resources (CPU/GPU) and the size of your dataset (which is implicitly quite large, given the telemetry nature).
